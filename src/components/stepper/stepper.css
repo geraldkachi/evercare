@@ -1,0 +1,31 @@
+.step-item {
+    @apply relative flex flex-col justify-center items-center;
+  }
+  
+  .step-item:not(:first-child)::before {
+      @apply content-[''] bg-[#002355] absolute w-1/4 h-[2px] -top-1/4 -translate-y-1/2 rotate-90;
+  }
+  
+  .step {
+    @apply w-[50px] py-2 flex items-center justify-center z-10  relative font-semibold text-[#002355];
+  }
+  
+  .active .step {
+    @apply bg-white text-[#001027];
+  }
+  
+  .btn {
+    @apply bg-gray-800 hover:bg-gray-700 text-gray-100 font-medium px-7 py-1;
+  }
+  
+  .complete .step {
+      @apply bg-white text-[#001027];
+  }
+  
+  .complete p {
+      @apply text-[#444444];
+  }
+  .complete:not(:first-child)::before,
+  .active:not(:first-child)::before {
+      @apply bg-[#002355] text-[#001027];
+  }
