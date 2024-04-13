@@ -22,10 +22,7 @@ export const chronicConditionData = [
     { value: "Polycystic kidney disease", label: "Polycystic kidney disease" },
     { value: "Nephrotic syndrome", label: "Nephrotic syndrome" },
     { value: "Osteoarthritis", label: "Osteoarthritis" },
-    // { value: "Rheumatoid arthritis", label: "Rheumatoid arthritis" },
-    // { value: "Osteoarthritis", label: "Osteoarthritis" },
     { value: "Osteoporosis", label: "Osteoporosis" },
-    // { value: "Obesity", label: "Obesity" },
   ];
 
   export const dietaryArray = [
