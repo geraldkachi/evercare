@@ -18,10 +18,13 @@ interface CountState {
     lastName: string
     role: string
     email: string
-    date: number
+    date: string
     phoneNumber: string
     password: string
     confirmPassword: string
+    // gender: 'male' | 'female'
+    gender: string
+    setGender?: (n: string) => void
 },
 }
 
@@ -41,10 +44,12 @@ const useCountStore = create<CountState>()(persist((set) => ({
       lastName: '',
       role: '',
       email: '',
-      date: Date.now(),
+      date: '',
       phoneNumber: '',
       password: '',
       confirmPassword: '',
+      gender: '', // 'male', 'female' or '' for unselected
+      // setGender: (newGender) => set({ gender: newGender }),
   },
     }),
     {
