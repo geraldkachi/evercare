@@ -1,6 +1,6 @@
 
 import { create } from "zustand";
-import { createJSONStorage, persist } from "zustand/middleware";
+// import { createJSONStorage, persist } from "zustand/middleware";
 
 interface CountState {
   count: number;
@@ -23,17 +23,42 @@ interface CountState {
     password: string
     confirmPassword: string
     // gender: 'male' | 'female'
+    others: string
+    othersHistor: string
     gender: string
     setGender?: (n: string) => void
-},
+  },
+  resetState: () => void
+  chronicCondition: string[]
+  dietaryPreference: string[]
+  physicalActivity: string[]
+  sleepPatterns: string[]
+  tobaccoProducts: string[]
+  visitDoctor: string[]
+  bloodSugarPressure: string[]
+  recentLabTests: string[]
+  previousSurgeriesorHospitalizations: string[]
 }
 
-const useCountStore = create<CountState>()(persist((set) => ({
+const useCountStore = create<CountState>()(
+  // persist(
+    (set) => ({
     count: 1,
     increment: () => set((state) => ({ count: state.count + 1 })),
     decrement: () => set((state) => ({ count: state.count - 1 })),
     complete: false,
     toggleComplete: () => set((state) => ({ complete: !state.complete})),
+    chronicCondition: [],
+    
+    dietaryPreference: [],
+    physicalActivity: [],
+    sleepPatterns: [],
+    tobaccoProducts: [],
+
+    visitDoctor: [],
+    bloodSugarPressure: [],
+    recentLabTests: [],
+    previousSurgeriesorHospitalizations: [],
     form: {
       address: '',
       state: '',
@@ -45,20 +70,23 @@ const useCountStore = create<CountState>()(persist((set) => ({
       role: '',
       email: '',
       date: '',
+      others: '',
       phoneNumber: '',
       password: '',
       confirmPassword: '',
       gender: '', // 'male', 'female' or '' for unselected
+      othersHistor: ''
       // setGender: (newGender) => set({ gender: newGender }),
-  },
+    },
+    resetState: () => set({}, true), // Setzen Sie den Zustand auf einen leeren Zustand
     }),
-    {
-      name: "count-store",
-      storage: createJSONStorage(() => localStorage)
-      // Use localStorage for web, AsyncStorage for React Native
+    // {
+    //   name: "count-store",
+    //   storage: createJSONStorage(() => localStorage)
+    //   // Use localStorage for web, AsyncStorage for React Native
 
-    }
-  )
+    // }
+  // )
 );
 
 export default useCountStore; 
