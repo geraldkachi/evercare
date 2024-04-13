@@ -18,6 +18,7 @@ interface CountState {
     lastName: string
     role: string
     email: string
+    date: number
     phoneNumber: string
     password: string
     confirmPassword: string
@@ -40,6 +41,7 @@ const useCountStore = create<CountState>()(persist((set) => ({
       lastName: '',
       role: '',
       email: '',
+      date: Date.now(),
       phoneNumber: '',
       password: '',
       confirmPassword: '',

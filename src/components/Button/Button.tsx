@@ -1,8 +1,8 @@
 import { ButtonHTMLAttributes, DetailedHTMLProps, ReactNode } from 'react';
 
 const Spinner = () =>
-    <div className=" flex items-center justify-center px-10 py-[2px]">
-        <div className="w-5 h-5 border-4 border-dashed rounded-full animate-spin border-[#ffffff]" />
+    <div className=" flex items-center justify-center px-6 py-[0px]">
+        <div className="w-3 h-3 border-2 border-dashed rounded-full animate-spin border-[#ffffff]" />
     </div>
 
 type Props = DetailedHTMLProps<
@@ -19,7 +19,7 @@ type Props = DetailedHTMLProps<
 };
 
 const variants = {
-    primary: 'bg-[#002355] text-white hover:bg-blue-2 border-none hover:bg-[#1066bb] text-xs md:text-sm py-3 md:py-2 px-2 md:px-6',
+    primary: 'bg-[#002355] text-white hover:bg-blue-2 border-none hover:bg-[#1066bb] text-xs md:text-sm py-1 px-6',
     secondary: 'bg-red text-white hover:bg-red-1 border-none',
     link: 'bg-none text-blue hover:bg-white-azure border-none',
     outline:
@@ -52,7 +52,7 @@ const Button = ({
         <button {...rest}
             type={type}
             disabled={disabled || loading}
-            className={`flex items-center text-xs md:text-sm py-3 md:py-2 px-2 md:px-6 hover:bg-[#2c466c] rounded-[4px] disabled:bg-gray-300 border disabled:text-gray-50 whitespace-nowrap ${variants[variant]} ${sizes[size]} ${className} ${(loading) && 'py-3 md:py-4 px-8 md:px-12 bg-[#002355] text-[#ffffff]'}`}>
+            className={`flex items-center justify-center text-xs md:text-sm hover:px-7 py-3 md:py-2 px-2 md:px-6 hover:bg-[#2c466c] rounded-[8px] leading-6 disabled:bg-gray-300 border disabled:text-gray-50 whitespace-nowrap ${variants[variant]} ${sizes[size]} ${className} ${(loading) && 'py-3 md:py-4 px-8 md:px-12 bg-[#002355] text-[#ffffff]'}`}>
             {prefixIcon && (<> {prefixIcon}&nbsp;&nbsp;</>)}
             {loading ? <Spinner /> : <>{title || children}</>}
             {suffixIcon && (<> &nbsp;&nbsp;{suffixIcon}</>)}

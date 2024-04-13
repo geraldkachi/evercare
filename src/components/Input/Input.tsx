@@ -56,7 +56,7 @@ export default function Input(
 		<div className={`bg- mb-3  ${className}`}>
 			{label && (
 				<label
-					className="mb-1 text-[#0D1227] leading-6 flex items-center text-left text-xs md:text-sm font-normal"
+					className={` mb-1 text-[#0D1227] leading-6 flex items-center text-left text-xs md:text-sm font-normal`}
 					htmlFor={id}
 				>
 					{label}
@@ -83,7 +83,7 @@ export default function Input(
 				)}
 				<input
 					{...props}
-					className={`${LeadingIcon && 'ps-10'} ${TrailingIcon && 'pe-5 me-0'}
+					className={`${LeadingIcon && 'ps-10'} ${!label && 'md:mt-6' }  ${TrailingIcon && 'pe-5 me-0'}
 					border-${col()}
 					border w-full px-2 py-3 rounded-[4px] focus:outline-[#] focus:outline-none focus:bg-white dark:focus:text-black focus:border-[#1D8EE6] placeholder:text-xs placeholder:font-normal placeholder:text-[#ABABAB] placeholder:leading-6 ${inputClassName}`}
 				/>
