@@ -6,13 +6,13 @@ import Input from "../Input/Input";
 
 const HealthCheckups = () => {
  
-const { increment, count, visitDoctor, bloodSugarPressure, recentLabTests, previousSurgeriesorHospitalizations, form } = useCountStore()
+const { count, visitDoctor, bloodSugarPressure, recentLabTests, previousSurgeriesorHospitalizations, form } = useCountStore()
 const others = useCountStore((state) => state.form.othersHistor);
 
-console.log(visitDoctor, 'visitDoctor')
-console.log(bloodSugarPressure, 'bloodSugarPressure')
-console.log(recentLabTests, 'recentLabTests')
-console.log(previousSurgeriesorHospitalizations, 'previousSurgeriesorHospitalizations')
+// console.log(visitDoctor, 'visitDoctor')
+// console.log(bloodSugarPressure, 'bloodSugarPressure')
+// console.log(recentLabTests, 'recentLabTests')
+// console.log(previousSurgeriesorHospitalizations, 'previousSurgeriesorHospitalizations')
 const disabledProps = !visitDoctor.length || !bloodSugarPressure.length || !recentLabTests.length || !previousSurgeriesorHospitalizations.length
 const [error, setError] = useState('');
 
@@ -171,6 +171,8 @@ const handleOthers = (e: React.ChangeEvent<HTMLInputElement>) => {
               )
             })}
           </div>
+
+          {error && <span className="text-xs text-red-600">{error}</span> }
           
 
           <div>

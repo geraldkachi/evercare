@@ -1,9 +1,9 @@
-import { FormEvent, useState } from "react";
+import {  useState } from "react";
 import useCountStore from "../../store/store";
 import { underliningconditionData, currentlyManagingAnyoFtheseConditionsData, medicalUnderliningConditionToReferToUs, anyKnownAllergicReactionsToTheseMedicationsData, adhereToTheseMedicationsData, barriersPreventingTreatmentPlanData, ifYesWhatAreTheseBarriersData, membersOrCaregiversInvolvedInYourCareData, carryingOutTheseActivitiesData, natureOfThePainData, natureOFYourMobilityData, historyOfAnyChronicDiseasesData, experiencedAnySignificantChangesInYourFealthoRLifestyleRecentlyData, doYouFeelPainWhenCarryingOutTheseActivitiesData, natureOfYourMobilityData, whatIsTheNatureOfThePainData } from "../../data/data";
 import Input from "../Input/Input";
 import Button from "../Button/Button";
-import * as Yup from 'yup';
+// import * as Yup from 'yup';
 import { useNavigate } from "react-router-dom";
 
 
@@ -11,7 +11,7 @@ const MedicalHistory = () => {
   const navigate = useNavigate()
   const [step, setStep] = useState('')
   const [yesOpt, setYesOpt] = useState('')
-  const [error, setError] = useState('');
+  const [error] = useState('');
 
   const { underliningcondition, currentlyManagingAnyoFtheseConditions, nyKnownAllergicReactionsToTheseMedications, adhereToTheseMedications, barriersPreventingTreatmentPlan, ifYesWhatAreTheseBarriers, membersOrCaregiversInvolvedInYourCare, carryingOutTheseActivities, natureOfThePain, natureOFYourMobility, historyOfAnyChronicDiseases, experiencedAnySignificantChangesInYourFealthoRLifestyleRecently, doYouFeelPainWhenCarryingOutTheseActivities, whatIsTheNatureOfThePain, whatIsTheNatureOfYourMobilityEnd, form } = useCountStore()
   const others = useCountStore(state => state.form.othersMedicalHistory)
@@ -28,11 +28,11 @@ const MedicalHistory = () => {
 
   const disabledBtn = (yesOpt == 'yes') ? (!underliningcondition.length || !currentlyManagingAnyoFtheseConditions.length) : (underliningcondition[0] == 'No' ? !underliningcondition.length : !contactInfoEmailnPhone)
 
-  const schema = Yup.object().shape({
-    contactInfo: Yup.string()
-      .matches(/^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/, 'Invalid phone number or email')
-      .required('Phone number or email is required'),
-  });
+  // const schema = Yup.object().shape({
+  //   contactInfo: Yup.string()
+  //     .matches(/^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/, 'Invalid phone number or email')
+  //     .required('Phone number or email is required'),
+  // });
 
   // console.log(currentlyManagingAnyoFtheseConditions, 'currentlyManagingAnyoFtheseConditions')
 
@@ -120,17 +120,17 @@ const MedicalHistory = () => {
     // setError('');
   };
 
-  const handleSubmit = async (event: FormEvent) => {
-    event.preventDefault();
-    try {
-      await schema.validate({ contactInfo: contactInfoEmailnPhone }, { abortEarly: false });
-      setError('');
-      console.log('Phone number/email:', contactInfoEmailnPhone);
-      // You can submit the form data to your backend or perform other actions here
-    } catch (validationError: any) {
-      setError(validationError.errors[0]);
-    }
-  };
+  // const handleSubmit = async (event: FormEvent) => {
+  //   event.preventDefault();
+  //   try {
+  //     await schema.validate({ contactInfo: contactInfoEmailnPhone }, { abortEarly: false });
+  //     setError('');
+  //     console.log('Phone number/email:', contactInfoEmailnPhone);
+  //     // You can submit the form data to your backend or perform other actions here
+  //   } catch (validationError: any) {
+  //     setError(validationError.errors[0]);
+  //   }
+  // };
 
   return (
     <div className="flex justify-center w-full">
@@ -157,7 +157,7 @@ const MedicalHistory = () => {
                   {/* <div className="my-5" /> */}
                   <hr className="border my-8 border-black " />
                   <div className="break-all mb-10">
-                    <div className="text-lg md:text-lg font-semibold text-[#1C1C1C] mb-2">What non-chronic medical underliningcondition(s) are your managing? </div>
+                    <div className="text-lg md:text-lg font-semibold text-[#1C1C1C] mb-2">What non-chronic medical underliningcondition(s) are your managing?</div>
                     <div className="text-lg md:text-lg text-[#1C1C1C] italic mb-2">(select all that apply) </div>
                   </div>
 

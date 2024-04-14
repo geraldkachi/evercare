@@ -19,7 +19,7 @@ const GettingStartedForm = () => {
   const navigate = useNavigate()
   const [step, setStep] = useState('')
   const form = useCountStore((state) => state.form);
-  const { increment, count, chronicCondition } = useCountStore()
+  const { count, chronicCondition } = useCountStore()
   const firstName = useCountStore((state) => state.form.firstName);
   const lastName = useCountStore((state) => state.form.lastName);
   const date = useCountStore((state) => state.form.date);

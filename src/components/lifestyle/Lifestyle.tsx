@@ -1,10 +1,9 @@
-import { useState } from "react";
 import { dietaryArray, physicalActivityData, sleepPatternsData, smokeTobaccoProductsData } from "../../data/data"
 import Button from "../Button/Button"
 import useCountStore from "../../store/store";
 
 const Lifestyle = () => {
-  const { increment, count, dietaryPreference, physicalActivity, sleepPatterns, tobaccoProducts } = useCountStore()
+  const { count, dietaryPreference, physicalActivity, sleepPatterns, tobaccoProducts } = useCountStore()
 
 // console.log(selectedValues, 'selectedValues')
 // console.log(selectedValues2, 'selectedValues 2')
