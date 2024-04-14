@@ -41,7 +41,7 @@ const handleOthers = (e: React.ChangeEvent<HTMLInputElement>) => {
           <div className="flex items-center gap-2">
             <div className="text-lg leading-7 font-bold my-2">How often do you visit the doctor/hospital?</div>
           </div>
-          <div className="flex items-center gap-2 mb-4">
+          <div className="flex items-center flex-wrap gap-2 mb-4">
             {visitDoctorData.map(({value}) => {
               const index = visitDoctor.indexOf(value);
               const isSelected = index !== -1;
