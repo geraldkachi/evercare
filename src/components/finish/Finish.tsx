@@ -8,6 +8,39 @@ const Finish = () => {
         useCountStore.setState({})
         resetState
         useCountStore.setState({
+            count: 1,
+            // increment: () => set((state) => ({ count: state.count + 1 })),
+            // decrement: () => set((state) => ({ count: state.count - 1 })),
+            complete: false,
+            // toggleComplete: () => set((state) => ({ complete: !state.complete })),
+            chronicCondition: [],
+
+            dietaryPreference: [],
+            physicalActivity: [],
+            sleepPatterns: [],
+            tobaccoProducts: [],
+
+            visitDoctor: [],
+            bloodSugarPressure: [],
+            recentLabTests: [],
+            previousSurgeriesorHospitalizations: [],
+
+            underliningcondition: [],
+            currentlyManagingAnyoFtheseConditions: [],
+
+            nyKnownAllergicReactionsToTheseMedications: [],
+            adhereToTheseMedications: [],
+            barriersPreventingTreatmentPlan: [],
+            ifYesWhatAreTheseBarriers: [],
+            membersOrCaregiversInvolvedInYourCare: [],
+            carryingOutTheseActivities: [],
+            natureOfThePain: [],
+            natureOFYourMobility: [],
+            historyOfAnyChronicDiseases: [],
+            experiencedAnySignificantChangesInYourFealthoRLifestyleRecently: [],
+            doYouFeelPainWhenCarryingOutTheseActivities: [],
+            whatIsTheNatureOfYourMobilityEnd: [],
+            whatIsTheNatureOfThePain: [],
             form: {
                 address: '',
                 state: '',
@@ -32,10 +65,12 @@ const Finish = () => {
                 othersBarriers: '',
                 whatTypeAndFrequency: '',
                 painFelt: '',
+                engageInRegularPhysicalActivity: '',
+                whereIsThisPainFelt: '',
             }
         }, true);
     }, [])
-    
+
     return (
         <div className="flex flex-col items-center justify- max-w-md mx-auto h-screen w-screen">
             <div className="mb-20">

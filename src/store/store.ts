@@ -34,6 +34,8 @@ interface CountState {
     othersBarriers: string
     whatTypeAndFrequency: string
     painFelt: string
+    engageInRegularPhysicalActivity: string
+    whereIsThisPainFelt: string
   },
   resetState: () => void
   chronicCondition: string[]
@@ -57,6 +59,11 @@ interface CountState {
   carryingOutTheseActivities: string[]
   natureOfThePain: string[]
   natureOFYourMobility: string[]
+  historyOfAnyChronicDiseases: string[]
+  experiencedAnySignificantChangesInYourFealthoRLifestyleRecently: string[]
+  doYouFeelPainWhenCarryingOutTheseActivities: string[]
+  whatIsTheNatureOfYourMobilityEnd: string[]
+  whatIsTheNatureOfThePain: string[]
 }
 
 const useCountStore = create<CountState>()(
@@ -90,6 +97,11 @@ const useCountStore = create<CountState>()(
     carryingOutTheseActivities: [],
     natureOfThePain: [],
     natureOFYourMobility: [],
+    historyOfAnyChronicDiseases: [],
+    experiencedAnySignificantChangesInYourFealthoRLifestyleRecently: [],
+    doYouFeelPainWhenCarryingOutTheseActivities: [],
+    whatIsTheNatureOfYourMobilityEnd: [],
+    whatIsTheNatureOfThePain: [],
 
     form: {
       address: '',
@@ -115,6 +127,8 @@ const useCountStore = create<CountState>()(
       othersBarriers: '',
       whatTypeAndFrequency: '',
       painFelt: '',
+      engageInRegularPhysicalActivity: '',
+      whereIsThisPainFelt: '',
       // setGender: (newGender) => set({ gender: newGender }),
     },
     resetState: () => set({
@@ -142,6 +156,8 @@ const useCountStore = create<CountState>()(
         othersBarriers: '',
         whatTypeAndFrequency: '',
         painFelt: '',
+        engageInRegularPhysicalActivity: '',
+        whereIsThisPainFelt: '',
       }
     }, true), // Setzen Sie den Zustand auf einen leeren Zustand
   }),
