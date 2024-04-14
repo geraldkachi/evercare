@@ -1,11 +1,43 @@
 import { useNavigate } from "react-router-dom"
 import useCountStore from "../../store/store"
 import Button from "../Button/Button"
+import { useEffect } from "react"
 
 const RequestASecondOpinion = () => {
     const navigate = useNavigate()
     const { resetState } = useCountStore()
     // const resetState = () => useCountStore.setState({}, true);
+    useEffect(() => {
+        useCountStore.setState({})
+        resetState
+        useCountStore.setState({
+            form: {
+                address: '',
+                state: '',
+                country: '',
+                industry: '',
+                employeeSize: '',
+                firstName: '',
+                lastName: '',
+                role: '',
+                email: '',
+                date: '',
+                others: '',
+                phoneNumber: '',
+                password: '',
+                confirmPassword: '',
+                gender: '', // 'male', 'female' or '' for unselected
+                othersHistor: '',
+                othersMedicalHistory: '',
+                contactInfoEmailnPhone: '',
+                currentMedications: '',
+                IfYesStateTheAllergies: '',
+                othersBarriers: '',
+                whatTypeAndFrequency: '',
+                painFelt: '',
+            }
+        }, true);
+    }, [])
 
 
   return (

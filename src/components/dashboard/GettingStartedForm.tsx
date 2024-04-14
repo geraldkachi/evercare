@@ -138,7 +138,7 @@ const GettingStartedForm = () => {
 
                 <div className="flex flex-wrap gap-2 max-w-fit">
                   {chronicConditionData.map(({value}) => {
-                  const index = chronicCondition.indexOf(value);
+                  const index = chronicCondition?.indexOf(value);
                   const isSelected = index !== -1;
                   // console.log(isSelected, 'isSelected')
                   // console.log(index, 'index')
@@ -148,9 +148,9 @@ const GettingStartedForm = () => {
                       useCountStore.setState({chronicCondition: [value]});
                     } else {
                       if (isSelected) {
-                        chronicCondition.splice(index, 1);
+                        chronicCondition?.splice(index, 1);
                       } else {
-                        chronicCondition.push(value);
+                        chronicCondition?.push(value);
                       }
                       useCountStore.setState({chronicCondition: [...chronicCondition]});
                     }
@@ -171,7 +171,7 @@ const GettingStartedForm = () => {
                   //     }
                   //     return spr
                   //   })}
-                     className={`${chronicCondition.includes(value) && '!border !border-purple-600 text-purple-600' }  cursor-pointer border border-[#1c1c1c] text-xs px-4 py-2 rounded-3xl max-w`}>{value}</div>
+                     className={`${chronicCondition?.includes(value) && '!border !border-purple-600 text-purple-600' }  cursor-pointer border border-[#1c1c1c] text-xs px-4 py-2 rounded-3xl max-w`}>{value}</div>
                   )}
                   )}
                 </div>
@@ -189,7 +189,7 @@ const GettingStartedForm = () => {
             )}
 
             <div>
-              <Button title={`${yesOpt == 'yes' ? 'Finish' : 'Continue'}`} disabled={!yesOpt || (yesOpt == 'yes' && !chronicCondition.length)  || (yesOpt === 'no'&& chronicCondition.length as unknown as boolean)} className="mb-20 mt-10 te w-full sm:w-[unset]" onClick={() => {
+              <Button title={`${yesOpt == 'yes' ? 'Finish' : 'Continue'}`} disabled={!yesOpt || (yesOpt == 'yes' && !chronicCondition?.length)  || (yesOpt === 'no'&& chronicCondition?.length as unknown as boolean)} className="mb-20 mt-10 te w-full sm:w-[unset]" onClick={() => {
                 if (yesOpt == 'yes') {
                   navigate('/a-second-opinion')
                   // useCountStore.persist.clearStorage();
