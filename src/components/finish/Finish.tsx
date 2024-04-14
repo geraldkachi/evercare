@@ -69,6 +69,7 @@ const Finish = () => {
                 whereIsThisPainFelt: '',
             }
         }, true);
+        // window.location.reload()
     }, [])
 
     return (

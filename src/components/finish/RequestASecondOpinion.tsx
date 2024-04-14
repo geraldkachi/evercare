@@ -72,6 +72,7 @@ const RequestASecondOpinion = () => {
                 whereIsThisPainFelt: '',
             }
         }, true);
+        // window.location.reload()
     }, [])
 
 
