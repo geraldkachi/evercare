@@ -35,12 +35,6 @@ const GettingStartedForm = () => {
   //     value: string, 
   //     label: string
   // }
-
-  // const [selectedValues, setSelectedValues] = useState<any[]>([]);
-  // console.log(selectedValues, 'selectedValues')
-  console.log(chronicCondition, 'chronicCondition')
-
-
   const displayBtn = !phoneNumber || !firstName || !lastName || !gender || !address || !date;
 
   const handleFirstName = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -102,12 +96,12 @@ const GettingStartedForm = () => {
       .validate({ phoneNumber })
       .then(() => {
         // Validation success
-        console.log('Valid phone number:', phoneNumber);
+        // console.log('Valid phone number:', phoneNumber);
         // Here you can perform further actions like submitting the form
       })
       .catch((validationError) => {
         // Validation failed
-        console.error('Validation error:', validationError);
+        // console.error('Validation error:', validationError);
         setError(validationError.errors[0]);
       });
   };
