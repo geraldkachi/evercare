@@ -3,7 +3,9 @@ import useCountStore from '../../store/store'
 
 const Stepper = () => {
     const currentStep = useCountStore((state) => state.count);
-    const {complete, increment, decrement, count} = useCountStore()
+    const {complete,
+        //  increment, decrement, count
+    } = useCountStore()
     // const [complete, setComplete] = useState<boolean>(false)
     const steps: string[] = ['Getting started', 'Lifestyle', 'Health Checkups', 'Medical History']
     return (
@@ -30,7 +32,7 @@ const Stepper = () => {
                     )}
                 </div>
 
-                {!complete &&
+                {/* {!complete &&
                     <div>
                         <button disabled={currentStep === 5} className='btn ' onClick={() => {
                             currentStep === steps.length
@@ -42,14 +44,14 @@ const Stepper = () => {
                         }
                         }> {currentStep === steps.length ? "Finish" : "Next"}</button>
                     </div>
-                }
+                } */}
 
-                <button 
+                {/* <button 
                 disabled={currentStep === 1}
                  onClick={() => {
                     decrement()
                     useCountStore.persist.clearStorage();
-                }}>decrement</button>
+                }}>decrement</button> */}
             </div>
         </div>
     )

@@ -19,7 +19,7 @@ type Props = DetailedHTMLProps<
 };
 
 const variants = {
-    primary: 'bg-[#002355] text-white hover:bg-blue-2 border-none hover:bg-[#1066bb] text-xs md:text-sm py-1 px-8 hover:bg-[#2c466c]',
+    primary: 'bg-[#002355] text-white border-none hover:bg-[#1066bb] text-xs md:text-sm py-1 px-8 hover:bg-[#2c466c]',
     secondary: 'bg-red text-white hover:bg-red-1 bg-white !border !border-[#002355] !text-[#002355] text-xs md:text-sm py-1 px-4',
     link: 'bg-none text-blue hover:bg-white-azure border-none',
     outline:
@@ -52,7 +52,7 @@ const Button = ({
         <button {...rest}
             type={type}
             disabled={disabled || loading}
-            className={`flex items-center justify-center text-xs md:text-sm hover:px-7 py-3 md:py-2 px-2 md:px-8 rounded-[8px] leading-6 disabled:bg-gray-300 border disabled:text-gray-50 whitespace-nowrap ${variants[variant]} ${sizes[size]} ${className} ${(loading) && 'py-3 md:py-4 px-8 md:px-12 bg-[#002355] text-[#ffffff]'}`}>
+            className={`flex items-center justify-center text-xs md:text-sm hover:px-10 py-3 md:py-2 px-2 md:px-8 rounded-[8px] leading-6 disabled:bg-gray-300 border disabled:text-gray-50 whitespace-nowrap ${variants[variant]} ${sizes[size]} ${className} ${(loading) && 'py-3 md:py-4 px-8 md:px-12 bg-[#002355] text-[#ffffff]'}`}>
             {prefixIcon && (<> {prefixIcon}&nbsp;&nbsp;</>)}
             {loading ? <Spinner /> : <>{title || children}</>}
             {suffixIcon && (<> &nbsp;&nbsp;{suffixIcon}</>)}
