@@ -24,12 +24,6 @@ const MedicalHistory = () => {
   const engageInRegularPA = useCountStore(state => state.form.engageInRegularPhysicalActivity)
   const whereIsThisPainFelt = useCountStore(state => state.form.whereIsThisPainFelt)
 
-  console.log(historyOfAnyChronicDiseases[0], 'historyOfAnyChronicDiseases')
-  console.log(engageInRegularPA[0], 'engageInRegularPA')
-  console.log(doYouFeelPainWhenCarryingOutTheseActivities[0], 'doYouFeelPainWhenCarryingOutTheseActivities')
-  console.log(nyKnownAllergicReactionsToTheseMedications[0], 'nyKnownAllergicReactionsToTheseMedications')
-  console.log(experiencedAnySignificantChangesInYourFealthoRLifestyleRecently[0], 'experiencedAnySignificantChangesInYourFealthoRLifestyleRecently')
-
   const disabledBtn = (yesOpt == 'yes') ? (!underliningcondition.length || !currentlyManagingAnyoFtheseConditions.length) : (underliningcondition[0] == 'No' ? !underliningcondition.length : !contactInfoEmailnPhone)
 
   // const schema = Yup.object().shape({
@@ -516,7 +510,7 @@ const MedicalHistory = () => {
 
               {yesOpt && <div>
                 <Button title={`${yesOpt == 'no' ? 'Finish' : 'Next'}`}
-                  disabled={!currentMedications || !adhereToTheseMedications.length || !nyKnownAllergicReactionsToTheseMedications.length}
+                  disabled={!barriersPreventingTreatmentPlan.length || !ifYesWhatAreTheseBarriers.length || !membersOrCaregiversInvolvedInYourCare.length}
                   className="mb-20 mt-10 te w-full sm:w-[unset]" onClick={() => {
                     if (yesOpt == 'yes' && currentlyManagingAnyoFtheseConditions[0] == 'Yes') {
                       setStep('after-medication')
@@ -535,9 +529,9 @@ const MedicalHistory = () => {
              </div>
             
              <Input
-               label="Others?"
+               label=""
                value={whatTypeAndFrequency}
-               className=" mt-3"
+               className=" mt-3 md:-mt-7"
                type="text"
                onChange={handleWhatTypeAndFrequency}
                name="others"
@@ -651,7 +645,7 @@ const MedicalHistory = () => {
 
              {yesOpt && <div>
                <Button title={`${yesOpt == 'no' ? 'Finish' : 'Next'}`}
-                 disabled={!currentMedications || !adhereToTheseMedications.length || !nyKnownAllergicReactionsToTheseMedications.length}
+                 disabled={!whatTypeAndFrequency || !carryingOutTheseActivities.length || !natureOfThePain.length || !painFelt || !natureOFYourMobility.length}
                  className="mb-20 mt-10 te w-full sm:w-[unset]" onClick={() => {
                    if (yesOpt == 'yes' && currentlyManagingAnyoFtheseConditions[0] == 'Yes') {
                      navigate('/finish')
