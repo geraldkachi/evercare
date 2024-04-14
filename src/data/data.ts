@@ -65,3 +65,30 @@ export const chronicConditionData = [
         { value: "Yes", label: "Yes" },
         { value: "No", label: "No" },
     ]
+    export const  underliningconditionData = [
+        { value: "Pneumonia", label: "Pneumonia" },
+        { value: "bronchitis", label: "bronchitis" },
+        { value: "Urinary Tract Infections (UTIs)", label: "Urinary Tract Infections (UTIs)" },
+        { value: "Gastroenteritis", label: "Gastroenteritis" },
+        { value: "Food poisoning", label: "Food poisoning" },
+        { value: "Skin Infections", label: "Skin Infections" },
+        { value: "Appendicitis", label: "Appendicitis" },
+        { value: "Sinusitis", label: "Sinusitis" },
+        { value: "Obesity", label: "Obesity" },
+        { value: "Allergic Reactions", label: "Allergic Reactions" },
+        { value: "Ear infections", label: "Ear infections" },
+        { value: "Conjunctivitis", label: "Conjunctivitis" },
+        { value: "Sprains", label: "Sprains" },
+        { value: "Fractures", label: "Fractures" },
+    ]
+    export const  currentlyManagingAnyoFtheseConditionsData = [
+        { value: "Yes", label: "Yes" },
+        { value: "No", label: "No" },
+    ]
+    
+    // NO
+    
+    export const  medicalUnderliningConditionToReferToUs = [
+        { value: "Yes", label: "Yes" },
+        { value: "No", label: "No" },
+    ]

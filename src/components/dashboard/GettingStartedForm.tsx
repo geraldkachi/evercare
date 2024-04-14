@@ -117,7 +117,7 @@ const GettingStartedForm = () => {
       {step &&
         <div className="flex flex-col max-w-2xl items-star w-full mt-10">
           <div className="break-all mb-10">
-            <div className="text-lg md:text-2xl text-[#1C1C1C] mb-2">Are you currently managing any <br /> chronic condition?</div>
+            <div className="text-2xl text-[#1C1C1C] mb-2">Are you currently managing any <br /> chronic condition?</div>
             <div className="text-[#444444] text-[14px] ">Are you currently managing any chronic condition at this time or have you ever <br /> managed any chronic condition?</div>
           </div>
           <div className="flex flex-col">
@@ -191,7 +191,7 @@ const GettingStartedForm = () => {
             <div>
               <Button title={`${yesOpt == 'yes' ? 'Finish' : 'Continue'}`} disabled={!yesOpt || (yesOpt == 'yes' && !chronicCondition.length)  || (yesOpt === 'no'&& chronicCondition.length as unknown as boolean)} className="mb-20 mt-10 te w-full sm:w-[unset]" onClick={() => {
                 if (yesOpt == 'yes') {
-                  navigate('/finish')
+                  navigate('/a-second-opinion')
                   // useCountStore.persist.clearStorage();
                 } else if (yesOpt == 'no') {
                   increment()
@@ -258,7 +258,7 @@ const GettingStartedForm = () => {
               label="What’s your phone number?"
               className="mb-1"
               value={phoneNumber}
-              type="text"
+              type="tel"
               onChange={handlePhoneNumber}
               name="phoneNumber"
               placeholder="  +234 | Your number goes here"
@@ -267,7 +267,7 @@ const GettingStartedForm = () => {
             {error && <div className="text-red-600 text-xs">{error}</div>}
 
             <div>
-              <label className="my-1 text-[#0D1227] leading-[19.6px] flex items-center text-left text-xs md:text-sm font-semibold">Enter your address here (Optional)</label>
+              <label className="my-1 text-[#0D1227] leading-[19.6px] flex items-center text-left text-xs md:text-sm font-">Enter your address here (Optional)</label>
               <textarea value={address} onChange={handleAddress} rows={5} className="block p-2.5 w-full text-sm text-gray-900 bg-white rounded-[4px] border border-[#424242] focus:bg-white focus:border focus:outline-none focus:border-[#1D8EE6] placeholder:text-[#ABABAB] placeholder:leading-6" placeholder="Write your thoughts here..."></textarea>
             </div>
 

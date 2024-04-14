@@ -26,13 +26,14 @@ const handleOthers = (e: React.ChangeEvent<HTMLInputElement>) => {
   setError('');
 };
 
+
   return (
     <>
       <div className="flex justify-center w-full">
 
         <div className="flex flex-col max-w-2xl w-full mt-10">
           <div className="break-all mb-10">
-            <div className="md:text-2xl text-[#1C1C1C] font-bold">Health Checkups</div>
+            <div className="text-2xl text-[#1C1C1C] font-bold">Health Checkups</div>
             <div className="text-[#444444] text-[14px] ">Tell us what your day to day life is like?</div>
           </div>
 
@@ -136,7 +137,7 @@ const handleOthers = (e: React.ChangeEvent<HTMLInputElement>) => {
                 className="mb-1"
                 type="text"
                 onChange={handleOthers}
-                name="lastName"
+                name="message"
                 placeholder="Please state"
               />
           </div>

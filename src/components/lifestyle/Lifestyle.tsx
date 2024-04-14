@@ -13,7 +13,6 @@ const Lifestyle = () => {
 
 const disabledProps = !dietaryPreference.length || !physicalActivity.length || !sleepPatterns.length || !tobaccoProducts.length
   return (
-    <>
       <div className="flex justify-center w-full mb-5">
 
         <div className="flex flex-col max-w-2xl w-full mt-10">
@@ -78,7 +77,7 @@ const disabledProps = !dietaryPreference.length || !physicalActivity.length || !
               };
               return (
                 <div key={value} onClick={RBoxgrouplogic}
-                className={`${physicalActivity.includes(value) && '!border !border-purple-600 text-purple-600' } whitespace-nowrap cursor-pointer border border-[#1c1c1c] text-xs px-4 py-2 rounded-3xl max-w`}>{value}</div>
+                className={`${physicalActivity.includes(value) && '!border !border-purple-600 text-purple-600' } whitespace-nowr cursor-pointer border border-[#1c1c1c] text-xs px-4 py-2 rounded-3xl max-w`}>{value}</div>
               )
             })}
           </div>
@@ -149,7 +148,6 @@ const disabledProps = !dietaryPreference.length || !physicalActivity.length || !
           </div>
         </div>
       </div>
-    </>
   )
 }
 
