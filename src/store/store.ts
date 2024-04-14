@@ -31,6 +31,9 @@ interface CountState {
     setGender?: (n: string) => void
     currentMedications: string
     IfYesStateTheAllergies: string
+    othersBarriers: string
+    whatTypeAndFrequency: string
+    painFelt: string
   },
   resetState: () => void
   chronicCondition: string[]
@@ -48,6 +51,12 @@ interface CountState {
 
   nyKnownAllergicReactionsToTheseMedications: string[]
   adhereToTheseMedications: string[]
+  barriersPreventingTreatmentPlan: string[]
+  ifYesWhatAreTheseBarriers: string[]
+  membersOrCaregiversInvolvedInYourCare: string[]
+  carryingOutTheseActivities: string[]
+  natureOfThePain: string[]
+  natureOFYourMobility: string[]
 }
 
 const useCountStore = create<CountState>()(
@@ -75,6 +84,12 @@ const useCountStore = create<CountState>()(
 
     nyKnownAllergicReactionsToTheseMedications: [],
     adhereToTheseMedications: [],
+    barriersPreventingTreatmentPlan: [],
+    ifYesWhatAreTheseBarriers: [],
+    membersOrCaregiversInvolvedInYourCare: [],
+    carryingOutTheseActivities: [],
+    natureOfThePain: [],
+    natureOFYourMobility: [],
 
     form: {
       address: '',
@@ -97,6 +112,9 @@ const useCountStore = create<CountState>()(
       contactInfoEmailnPhone: '',
       currentMedications: '',
       IfYesStateTheAllergies: '',
+      othersBarriers: '',
+      whatTypeAndFrequency: '',
+      painFelt: '',
       // setGender: (newGender) => set({ gender: newGender }),
     },
     resetState: () => set({

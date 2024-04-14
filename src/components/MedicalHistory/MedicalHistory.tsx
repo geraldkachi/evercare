@@ -1,6 +1,6 @@
 import { FormEvent, useState } from "react";
 import useCountStore from "../../store/store";
-import { underliningconditionData, currentlyManagingAnyoFtheseConditionsData, medicalUnderliningConditionToReferToUs, anyKnownAllergicReactionsToTheseMedicationsData, adhereToTheseMedicationsData, barriersPreventingTreatmentPlan } from "../../data/data";
+import { underliningconditionData, currentlyManagingAnyoFtheseConditionsData, medicalUnderliningConditionToReferToUs, anyKnownAllergicReactionsToTheseMedicationsData, adhereToTheseMedicationsData, barriersPreventingTreatmentPlanData, ifYesWhatAreTheseBarriersData, membersOrCaregiversInvolvedInYourCareData, carryingOutTheseActivitiesData, natureOfThePainData, natureOFYourMobilityData } from "../../data/data";
 import Input from "../Input/Input";
 import Button from "../Button/Button";
 import * as Yup from 'yup';
@@ -13,11 +13,14 @@ const MedicalHistory = () => {
   const [yesOpt, setYesOpt] = useState('')
   const [error, setError] = useState('');
 
-  const { underliningcondition, currentlyManagingAnyoFtheseConditions, nyKnownAllergicReactionsToTheseMedications, adhereToTheseMedications, form } = useCountStore()
+  const { underliningcondition, currentlyManagingAnyoFtheseConditions, nyKnownAllergicReactionsToTheseMedications, adhereToTheseMedications, barriersPreventingTreatmentPlan, ifYesWhatAreTheseBarriers, membersOrCaregiversInvolvedInYourCare, carryingOutTheseActivities, natureOfThePain, natureOFYourMobility,form } = useCountStore()
   const others = useCountStore(state => state.form.othersMedicalHistory)
   const currentMedications = useCountStore(state => state.form.currentMedications)
   const contactInfoEmailnPhone = useCountStore(state => state.form.contactInfoEmailnPhone)
   const IfYesStateTheAllergies = useCountStore(state => state.form.IfYesStateTheAllergies)
+  const othersBarriers = useCountStore(state => state.form.othersBarriers)
+  const whatTypeAndFrequency = useCountStore(state => state.form.whatTypeAndFrequency)
+  const painFelt = useCountStore(state => state.form.painFelt)
 
   // console.log(currentlyManagingAnyoFtheseConditions[0], 'currentlyManagingAnyoFtheseConditions')
 
@@ -63,6 +66,34 @@ const MedicalHistory = () => {
       form: {
         ...form,
         currentMedications: String(e.target.value),
+      },
+    });
+    // setError('');
+  };
+  const handleOthersBarriers = (e: React.ChangeEvent<HTMLInputElement>) => {
+    useCountStore.setState({
+      form: {
+        ...form,
+        othersBarriers: String(e.target.value),
+      },
+    });
+    // setError('');
+  };
+
+  const handleWhatTypeAndFrequency = (e: React.ChangeEvent<HTMLInputElement>) => {
+    useCountStore.setState({
+      form: {
+        ...form,
+        whatTypeAndFrequency: String(e.target.value),
+      },
+    });
+    // setError('');
+  };
+  const handlePainFelt = (e: React.ChangeEvent<HTMLInputElement>) => {
+    useCountStore.setState({
+      form: {
+        ...form,
+        painFelt: String(e.target.value),
       },
     });
     // setError('');
@@ -360,26 +391,26 @@ const MedicalHistory = () => {
               </div>
              
               <div className="flex flex-wrap gap-2 max-w-fit">
-                {barriersPreventingTreatmentPlan.map(({ value }) => {
-                  const index = adhereToTheseMedications.indexOf(value);
+                {barriersPreventingTreatmentPlanData.map(({ value }) => {
+                  const index = barriersPreventingTreatmentPlan.indexOf(value);
                   const isSelected = index !== -1;
 
                   const radio = true;
                   const RBoxgrouplogic = (): void => {
                     if (radio) {
-                      useCountStore.setState({ adhereToTheseMedications: [value] });
+                      useCountStore.setState({ barriersPreventingTreatmentPlan: [value] });
                     } else {
                       if (isSelected) {
-                        adhereToTheseMedications.splice(index, 1);
+                        barriersPreventingTreatmentPlan.splice(index, 1);
                       } else {
-                        adhereToTheseMedications.push(value);
+                        barriersPreventingTreatmentPlan.push(value);
                       }
-                      useCountStore.setState({ adhereToTheseMedications: [...adhereToTheseMedications] });
+                      useCountStore.setState({ barriersPreventingTreatmentPlan: [...barriersPreventingTreatmentPlan] });
                     }
                   };
 
                   return (
-                    <div key={value} onClick={RBoxgrouplogic} className={`${adhereToTheseMedications.includes(value) && '!border !border-purple-600 text-purple-600'}  cursor-pointer border border-[#1c1c1c] text-xs px-4 py-2 rounded-3xl max-w`}>{value}</div>
+                    <div key={value} onClick={RBoxgrouplogic} className={`${barriersPreventingTreatmentPlan.includes(value) && '!border !border-purple-600 text-purple-600'}  cursor-pointer border border-[#1c1c1c] text-xs px-4 py-2 rounded-3xl max-w`}>{value}</div>
                   )
                 }
                 )}
@@ -388,73 +419,69 @@ const MedicalHistory = () => {
 
             <div>
               <div className="break-all mt-3 md:mb-4">
-                <div className="text-lg md:text-lg font-semibold text-[#1C1C1C]">Do you have any known allergic reactions to these <br /> medications?</div>
+                <div className="text-lg md:text-lg font-semibold text-[#1C1C1C]">If yes, What are these barriers? (Tick as it applies to you)</div>
               </div>
               <div className="flex flex-wrap gap-2 max-w-fit">
-                {anyKnownAllergicReactionsToTheseMedicationsData.map(({ value }) => {
-                  const index = nyKnownAllergicReactionsToTheseMedications.indexOf(value);
+                {ifYesWhatAreTheseBarriersData.map(({ value }) => {
+                  const index = ifYesWhatAreTheseBarriers.indexOf(value);
                   const isSelected = index !== -1;
 
                   const radio = true;
                   const RBoxgrouplogic = (): void => {
                     if (radio) {
-                      useCountStore.setState({ nyKnownAllergicReactionsToTheseMedications: [value] });
+                      useCountStore.setState({ ifYesWhatAreTheseBarriers: [value] });
                     } else {
                       if (isSelected) {
-                        nyKnownAllergicReactionsToTheseMedications.splice(index, 1);
+                        ifYesWhatAreTheseBarriers.splice(index, 1);
                       } else {
-                        nyKnownAllergicReactionsToTheseMedications.push(value);
+                        ifYesWhatAreTheseBarriers.push(value);
                       }
-                      useCountStore.setState({ nyKnownAllergicReactionsToTheseMedications: [...nyKnownAllergicReactionsToTheseMedications] });
+                      useCountStore.setState({ ifYesWhatAreTheseBarriers: [...ifYesWhatAreTheseBarriers] });
                     }
                   };
 
                   return (
-                    <div key={value} onClick={RBoxgrouplogic} className={`${nyKnownAllergicReactionsToTheseMedications.includes(value) && '!border !border-purple-600 text-purple-600'}  cursor-pointer border border-[#1c1c1c] text-xs px-4 py-2 rounded-3xl max-w`}>{value}</div>
+                    <div key={value} onClick={RBoxgrouplogic} className={`${ifYesWhatAreTheseBarriers.includes(value) && '!border !border-purple-600 text-purple-600'}  cursor-pointer border border-[#1c1c1c] text-xs px-4 py-2 rounded-3xl max-w`}>{value}</div>
                   )
                 }
                 )}
               </div>
 
-
-              <div className="break-all mt-3 md:-mb-2">
-                <div className="text-lg md:text-lg font-semibold text-[#1C1C1C]">If yes, State the allergies</div>
-              </div>
               <Input
-                // label="Others?"
-                value={IfYesStateTheAllergies}
-                className=""
+                label="Others?"
+                value={othersBarriers}
+                className=" mt-3"
                 type="text"
-                onChange={handleIfYesStateTheAllergies}
+                onChange={handleOthersBarriers}
                 name="others"
                 placeholder="Please state"
               />
 
 
               <div className="break-all mt-3 md:mb-4">
-                <div className="text-lg md:text-lg font-semibold text-[#1C1C1C]">How much do you adhere to these medications?</div>
+                <div className="text-lg md:text-lg font-semibold text-[#1C1C1C]">Are there any family members or caregivers <br /> involved in your care?</div>
               </div>
               <div className="flex flex-wrap gap-2 max-w-fit">
-                {adhereToTheseMedicationsData.map(({ value }) => {
-                  const index = adhereToTheseMedications.indexOf(value);
+                {membersOrCaregiversInvolvedInYourCareData.map(({ value }) => {
+                  const index = membersOrCaregiversInvolvedInYourCare.indexOf(value);
                   const isSelected = index !== -1;
 
                   const radio = true;
                   const RBoxgrouplogic = (): void => {
                     if (radio) {
-                      useCountStore.setState({ adhereToTheseMedications: [value] });
+                      useCountStore.setState({ membersOrCaregiversInvolvedInYourCare: [value] });
                     } else {
                       if (isSelected) {
-                        adhereToTheseMedications.splice(index, 1);
+                        membersOrCaregiversInvolvedInYourCare.splice(index, 1);
                       } else {
-                        adhereToTheseMedications.push(value);
+                        membersOrCaregiversInvolvedInYourCare.push(value);
                       }
-                      useCountStore.setState({ adhereToTheseMedications: [...adhereToTheseMedications] });
+                      useCountStore.setState({ membersOrCaregiversInvolvedInYourCare: [...membersOrCaregiversInvolvedInYourCare] });
                     }
                   };
 
                   return (
-                    <div key={value} onClick={RBoxgrouplogic} className={`${adhereToTheseMedications.includes(value) && '!border !border-purple-600 text-purple-600'}  cursor-pointer border border-[#1c1c1c] text-xs px-4 py-2 rounded-3xl max-w`}>{value}</div>
+                    <div key={value} onClick={RBoxgrouplogic} className={`${membersOrCaregiversInvolvedInYourCare.includes(value) && '!border !border-purple-600 text-purple-600'}  cursor-pointer border border-[#1c1c1c] text-xs px-4 py-2 rounded-3xl max-w`}>{value}</div>
                   )
                 }
                 )}
@@ -465,12 +492,147 @@ const MedicalHistory = () => {
                   disabled={!currentMedications || !adhereToTheseMedications.length || !nyKnownAllergicReactionsToTheseMedications.length}
                   className="mb-20 mt-10 te w-full sm:w-[unset]" onClick={() => {
                     if (yesOpt == 'yes' && currentlyManagingAnyoFtheseConditions[0] == 'Yes') {
-                      setStep('medication')
+                      setStep('after-medication')
                     }
                   }} />
               </div>}
             </div>
           </div>
+        )}
+
+        {step == 'after-medication' && (
+           <div>
+           <div>
+             <div className="break-all mt-3 md:mb-4">
+               <div className="text-lg md:text-lg font-semibold text-[#1C1C1C]">Do you engage in regular physical activity? If so, <br /> what type and frequency?</div>
+             </div>
+            
+             <Input
+               label="Others?"
+               value={whatTypeAndFrequency}
+               className=" mt-3"
+               type="text"
+               onChange={handleWhatTypeAndFrequency}
+               name="others"
+               placeholder="Please state"
+             />
+           </div>
+
+           <div>
+             <div className="break-all mt-3 md:mb-4">
+               <div className="text-lg md:text-lg font-semibold text-[#1C1C1C]">Do you feel pain when carrying out these activities?</div>
+             </div>
+             <div className="flex flex-wrap gap-2 max-w-fit">
+               {carryingOutTheseActivitiesData.map(({ value }) => {
+                 const index = carryingOutTheseActivities.indexOf(value);
+                 const isSelected = index !== -1;
+
+                 const radio = true;
+                 const RBoxgrouplogic = (): void => {
+                   if (radio) {
+                     useCountStore.setState({ carryingOutTheseActivities: [value] });
+                   } else {
+                     if (isSelected) {
+                       carryingOutTheseActivities.splice(index, 1);
+                     } else {
+                       carryingOutTheseActivities.push(value);
+                     }
+                     useCountStore.setState({ carryingOutTheseActivities: [...carryingOutTheseActivities] });
+                   }
+                 };
+
+                 return (
+                   <div key={value} onClick={RBoxgrouplogic} className={`${carryingOutTheseActivities.includes(value) && '!border !border-purple-600 text-purple-600'}  cursor-pointer border border-[#1c1c1c] text-xs px-4 py-2 rounded-3xl max-w`}>{value}</div>
+                 )
+               }
+               )}
+             </div>
+
+
+             <div className="break-all mt-3 md:mb-4">
+               <div className="text-lg md:text-lg font-semibold text-[#1C1C1C]">What is the nature of the pain?</div>
+             </div>
+             <div className="flex flex-wrap gap-2 max-w-fit">
+               {natureOfThePainData.map(({ value }) => {
+                 const index = natureOfThePain.indexOf(value);
+                 const isSelected = index !== -1;
+
+                 const radio = true;
+                 const RBoxgrouplogic = (): void => {
+                   if (radio) {
+                     useCountStore.setState({ natureOfThePain: [value] });
+                   } else {
+                     if (isSelected) {
+                       natureOfThePain.splice(index, 1);
+                     } else {
+                       natureOfThePain.push(value);
+                     }
+                     useCountStore.setState({ natureOfThePain: [...natureOfThePain] });
+                   }
+                 };
+
+                 return (
+                   <div key={value} onClick={RBoxgrouplogic} className={`${natureOfThePain.includes(value) && '!border !border-purple-600 text-purple-600'}  cursor-pointer border border-[#1c1c1c] text-xs px-4 py-2 rounded-3xl max-w`}>{value}</div>
+                 )
+               }
+               )}
+             </div>
+
+             <div className="break-all mt-3 md:mb-4">
+               <div className="text-lg md:text-lg font-semibold text-[#1C1C1C]">Where is this pain felt?</div>
+             </div>
+             
+             <Input
+               label=""
+               value={painFelt}
+               className="md:-mt-8"
+               type="text"
+               onChange={handlePainFelt}
+               name="others"
+               placeholder="Please state"
+             />
+
+
+             <div className="break-all mt-3 md:mb-4">
+               <div className="text-lg md:text-lg font-semibold text-[#1C1C1C]">What is the nature of your Mobility?</div>
+             </div>
+             <div className="flex flex-wrap gap-2 max-w-fit">
+               {natureOFYourMobilityData.map(({ value }) => {
+                 const index = natureOFYourMobility.indexOf(value);
+                 const isSelected = index !== -1;
+
+                 const radio = true;
+                 const RBoxgrouplogic = (): void => {
+                   if (radio) {
+                     useCountStore.setState({ natureOFYourMobility: [value] });
+                   } else {
+                     if (isSelected) {
+                       natureOFYourMobility.splice(index, 1);
+                     } else {
+                       natureOFYourMobility.push(value);
+                     }
+                     useCountStore.setState({ natureOFYourMobility: [...natureOFYourMobility] });
+                   }
+                 };
+
+                 return (
+                   <div key={value} onClick={RBoxgrouplogic} className={`${natureOFYourMobility.includes(value) && '!border !border-purple-600 text-purple-600'}  cursor-pointer border border-[#1c1c1c] text-xs px-4 py-2 rounded-3xl max-w`}>{value}</div>
+                 )
+               }
+               )}
+             </div>
+
+             {yesOpt && <div>
+               <Button title={`${yesOpt == 'no' ? 'Finish' : 'Next'}`}
+                 disabled={!currentMedications || !adhereToTheseMedications.length || !nyKnownAllergicReactionsToTheseMedications.length}
+                 className="mb-20 mt-10 te w-full sm:w-[unset]" onClick={() => {
+                   if (yesOpt == 'yes' && currentlyManagingAnyoFtheseConditions[0] == 'Yes') {
+                     navigate('/finish')
+                   }
+                 }} />
+             </div>}
+           </div>
+         </div>
         )}
       </div>
 

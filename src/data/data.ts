@@ -103,8 +103,30 @@ export const chronicConditionData = [
         { value: "Occasionally missed doses", label: "Occasionally missed doses" },
         { value: "Poor adherence", label: "Poor adherence" },
     ]
-    export const  barriersPreventingTreatmentPlan = [
-        { value: "Strict adherence", label: "Strict adherence" },
-        { value: "Occasionally missed doses", label: "Occasionally missed doses" },
-        { value: "Poor adherence", label: "Poor adherence" },
+    export const  barriersPreventingTreatmentPlanData = [
+        { value: "Yes, there is", label: "Yes, there is" },
+        { value: "No, there isn’t", label: "No, there isn’t" },
+    ]
+    export const ifYesWhatAreTheseBarriersData = [
+        { value: "Side effects", label: "Side effects" },
+        { value: "Cost of medications", label: "Cost of medications" },
+        { value: "Distance to hospital", label: "Distance to hospital" },
+        { value: "Long queues at hospital", label: "Long queues at hospital" },
+    ]
+    export const membersOrCaregiversInvolvedInYourCareData = [
+        { value: "Yes, there is", label: "Yes, there is" },
+        { value: "No, there isn’t", label: "No, there isn’t" },
+    ]
+    export const carryingOutTheseActivitiesData = [
+        { value: "Yes", label: "Yes" },
+        { value: "No", label: "No" },
+    ]
+    export const natureOfThePainData = [
+        { value: "Chronic pain (consistent pain that stays for long)", label: "Chronic pain (consistent pain that stays for long)" },
+        { value: "Acute pain (short term pain that lasts for a short while)", label: "Acute pain (short term pain that lasts for a short while)" },
+    ]
+    export const natureOFYourMobilityData = [
+        { value: "Limited mobility", label: "Limited mobility" },
+        { value: "Wheelchair user", label: "Wheelchair user" },
+        { value: "No mobility issues", label: "No mobility issues" },
     ]
