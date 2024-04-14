@@ -4,7 +4,7 @@ import Button from "../Button/Button"
 import useCountStore from "../../store/store";
 
 const Lifestyle = () => {
-  const { increment, dietaryPreference, physicalActivity, sleepPatterns, tobaccoProducts } = useCountStore()
+  const { increment, count, dietaryPreference, physicalActivity, sleepPatterns, tobaccoProducts } = useCountStore()
 
 // console.log(selectedValues, 'selectedValues')
 // console.log(selectedValues2, 'selectedValues 2')
@@ -144,7 +144,7 @@ const disabledProps = !dietaryPreference.length || !physicalActivity.length || !
           
 
           <div>
-            <Button title="Continue" disabled={disabledProps}  onClick={() => {increment(); console.log('helps')}} className="mt-5 mb-10 te w-full sm:w-[unset]" />
+            <Button title="Continue" disabled={disabledProps}  onClick={() => {useCountStore.setState({count: count + 1})}} className="mt-5 mb-10 te w-full sm:w-[unset]" />
           </div>
         </div>
       </div>

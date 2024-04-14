@@ -3,7 +3,7 @@ import useCountStore from '../../store/store'
 
 const Stepper = () => {
     const currentStep = useCountStore((state) => state.count);
-    const {complete, increment, decrement} = useCountStore()
+    const {complete, increment, decrement, count} = useCountStore()
     // const [complete, setComplete] = useState<boolean>(false)
     const steps: string[] = ['Getting started', 'Lifestyle', 'Health Checkups', 'Medical History']
     return (
@@ -37,8 +37,8 @@ const Stepper = () => {
                                 // ? setComplete(true)
                                 // ? toggleComplete()
                                 ? useCountStore.setState({complete: true})
-                                : increment();
-                                // : setCurrentStep && setCurrentStep(prev => prev + 1)
+                                : useCountStore.setState({count: count + 1});
+                                // : increment();
                         }
                         }> {currentStep === steps.length ? "Finish" : "Next"}</button>
                     </div>

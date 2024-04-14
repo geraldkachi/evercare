@@ -6,7 +6,7 @@ import Input from "../Input/Input";
 
 const HealthCheckups = () => {
  
-const { increment, visitDoctor, bloodSugarPressure, recentLabTests, previousSurgeriesorHospitalizations, form } = useCountStore()
+const { increment, count, visitDoctor, bloodSugarPressure, recentLabTests, previousSurgeriesorHospitalizations, form } = useCountStore()
 const others = useCountStore((state) => state.form.othersHistor);
 
 console.log(visitDoctor, 'visitDoctor')
@@ -174,7 +174,7 @@ const handleOthers = (e: React.ChangeEvent<HTMLInputElement>) => {
           
 
           <div>
-          <Button title="Continue" disabled={disabledProps} onClick={() => {increment(); console.log('helps')}} className="mt-5 te w-full sm:w-[unset]" />
+          <Button title="Continue" disabled={disabledProps} onClick={() => {useCountStore.setState({count: count + 1})}} className="mt-5 te w-full sm:w-[unset]" />
           </div>
         </div>
       </div>

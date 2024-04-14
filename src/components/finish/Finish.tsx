@@ -7,6 +7,7 @@ const Finish = () => {
     useEffect(() => {
         useCountStore.setState({})
         resetState
+        useCountStore.setState({count: 1})
         useCountStore.setState({
             count: 1,
             // increment: () => set((state) => ({ count: state.count + 1 })),

@@ -19,7 +19,7 @@ const GettingStartedForm = () => {
   const navigate = useNavigate()
   const [step, setStep] = useState('')
   const form = useCountStore((state) => state.form);
-  const { increment, chronicCondition } = useCountStore()
+  const { increment, count, chronicCondition } = useCountStore()
   const firstName = useCountStore((state) => state.form.firstName);
   const lastName = useCountStore((state) => state.form.lastName);
   const date = useCountStore((state) => state.form.date);
@@ -194,7 +194,8 @@ const GettingStartedForm = () => {
                   navigate('/a-second-opinion')
                   // useCountStore.persist.clearStorage();
                 } else if (yesOpt == 'no') {
-                  increment()
+                  // increment()
+                  useCountStore.setState({count: count + 1})
                 }
               }} />
             </div>
