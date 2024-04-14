@@ -87,8 +87,24 @@ export const chronicConditionData = [
     ]
     
     // NO
-    
     export const  medicalUnderliningConditionToReferToUs = [
         { value: "Yes", label: "Yes" },
         { value: "No", label: "No" },
+    ]
+
+// Yes
+    export const  anyKnownAllergicReactionsToTheseMedicationsData = [
+        { value: "No, I don’t", label: "No, I don’t" },
+        { value: "Yes, I do", label: "Yes, I do" },
+        { value: "Approximately once a year", label: "Approximately once a year" },
+    ]
+    export const  adhereToTheseMedicationsData = [
+        { value: "Strict adherence", label: "Strict adherence" },
+        { value: "Occasionally missed doses", label: "Occasionally missed doses" },
+        { value: "Poor adherence", label: "Poor adherence" },
+    ]
+    export const  barriersPreventingTreatmentPlan = [
+        { value: "Strict adherence", label: "Strict adherence" },
+        { value: "Occasionally missed doses", label: "Occasionally missed doses" },
+        { value: "Poor adherence", label: "Poor adherence" },
     ]
