@@ -24,7 +24,11 @@ const MedicalHistory = () => {
   const engageInRegularPA = useCountStore(state => state.form.engageInRegularPhysicalActivity)
   const whereIsThisPainFelt = useCountStore(state => state.form.whereIsThisPainFelt)
 
-  // console.log(currentlyManagingAnyoFtheseConditions[0], 'currentlyManagingAnyoFtheseConditions')
+  console.log(historyOfAnyChronicDiseases[0], 'historyOfAnyChronicDiseases')
+  console.log(engageInRegularPA[0], 'engageInRegularPA')
+  console.log(doYouFeelPainWhenCarryingOutTheseActivities[0], 'doYouFeelPainWhenCarryingOutTheseActivities')
+  console.log(nyKnownAllergicReactionsToTheseMedications[0], 'nyKnownAllergicReactionsToTheseMedications')
+  console.log(experiencedAnySignificantChangesInYourFealthoRLifestyleRecently[0], 'experiencedAnySignificantChangesInYourFealthoRLifestyleRecently')
 
   const disabledBtn = (yesOpt == 'yes') ? (!underliningcondition.length || !currentlyManagingAnyoFtheseConditions.length) : (underliningcondition[0] == 'No' ? !underliningcondition.length : !contactInfoEmailnPhone)
 
@@ -775,7 +779,7 @@ const MedicalHistory = () => {
 
             {yesOpt && <div>
               <Button title={`${yesOpt == 'no' ? 'Finish' : 'Next'}`}
-                // disabled={!currentMedications || !adhereToTheseMedications.length || !nyKnownAllergicReactionsToTheseMedications.length}
+                disabled={!historyOfAnyChronicDiseases.length || !experiencedAnySignificantChangesInYourFealthoRLifestyleRecently.length || !doYouFeelPainWhenCarryingOutTheseActivities.length || !engageInRegularPA}
                 className="mb-20 mt-10 te w-full sm:w-[unset]" onClick={() => {
                   if (yesOpt == 'yes' && doYouFeelPainWhenCarryingOutTheseActivities[0] == 'No') {
                     navigate('/finish')
